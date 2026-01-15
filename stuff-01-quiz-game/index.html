@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stuff-01-Quiz-Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- start screen -->
+    <div class="screen active" id="start-screen">
+      <h1>Quiz Time!</h1>
+      <p>Test your knowledge with these fun questions</p>
+      <button id="start-btn">Start Quiz</button>
+    </div>
+
+    <div class="screen" id="quiz-screen">
+      <div class="quiz-header">
+        <h2 id="question-text">Question Text Here</h2>
+        <div class="question-info">
+          <p>Question <span class="question-index">1</span> of <span class="num-total-question">5</span></p>
+          <p>Score: <span class="user-score">0</span></p>
+        </div>
+      </div>
+
+      <!-- answer container -->
+      <div class="answer-container">
+        <!-- Will be added via js -->
+      </div>
+
+      <!-- progress-bar -->
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <div class="screen" id="end-screen">
+      <h1>Quiz Results</h1>
+      <div class="stats">
+        <p>You scored <span id="user-score">0</span> out of <span class="max-score">100</span></p>
+        <div id="affirmation">Good job</div>
+      </div>
+      <button id="restart-btn">Restart Quiz</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
