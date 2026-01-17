@@ -178,3 +178,18 @@ body {
   border-color: #ffbdbd;
   color: #dc3545;
 }
+
+/* Responsive design */
+@media (max-width: 650px) {
+  .end-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.75rem;
+  }
+  
+  .container {
+    width: 80%;
+    padding: 2rem 1rem;
+  }
+}
