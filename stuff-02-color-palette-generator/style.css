@@ -1,0 +1,114 @@
+/* Import */
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+/* basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* style configuration */
+body {
+  font-family: "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #83a8df, #c3cfe2);
+}
+
+.container {
+  /* border: 1px solid red; */
+  background-color: white;
+  width: 90%;
+  max-width: 780px;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.container>h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.container>h1::after {
+  content: "";
+  background-color: #667eea;
+  height: 3px;
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  border-radius: 2rem;
+}
+
+#generate-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.palette-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.color-box {
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+}
+
+.color {
+  height: 10vh;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.color-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.color-info>i {
+  color: #555;
+  cursor: pointer;
+}
+
+/* responsive design */
+@media(max-width: 780px) {
+  .palette-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+/* Effect or pseudoclass */
+#generate-btn:hover {
+  box-shadow: 0px 4px 12px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+}
+
+#generate-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.color-box:hover {
+  transform: translateY(-3px);
+}
