@@ -34,6 +34,13 @@ generateBtn.addEventListener("click", generateColor);
 const colorBoxes = document.querySelectorAll(".color-box");
 
 function generateColor() {
+  colorBoxes.forEach((el) => {
+    let btn2 = el.querySelector(".copy-btn");
+    btn2.classList.replace("fas", "far");
+    btn2.classList.replace("fa-check", "fa-copy");
+    btn2.style.color = "#555";
+  });
+
   let colors = [];
   let letters = "0123456789abcdef";
   for(let i = 0; i < colorBoxes.length; i++) {
