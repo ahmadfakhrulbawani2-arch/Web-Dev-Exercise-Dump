@@ -17,11 +17,13 @@ Array.from(boards).forEach((board) => {
 
 // mechanism
 function dragStart(ev) {
-  ev.dataTransfer.setData("text/plain", this.id);
+  ev.dataTransfer.setData("text/plain", ev.target.id);
+  ev.target.classList.add("dragging");
 }
 
 function dragEnd(ev) {
   console.log(`Card id of ${ev.currentTarget.id} succesfully dragged`);
+  ev.target.classList.remove("dragging");
 }
 
 function dragOver(ev) {

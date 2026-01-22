@@ -60,7 +60,8 @@ body {
   border-radius: 0.5rem;
   cursor: grab;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.1s ease;
+  opacity: 1;
+  transition: all 0.1s ease, opacity 0.75s ease;
 }
 
 /* responsive design */
@@ -85,4 +86,9 @@ body {
 /* when board is over the dragged element */
 .board.over {
   background-color: #d1d3d8;
+}
+
+/* smoothen drag-drop mechanism */
+.card.dragging {
+  opacity: 0.75;
 }
