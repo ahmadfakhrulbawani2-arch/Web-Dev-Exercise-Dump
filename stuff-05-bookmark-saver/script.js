@@ -125,6 +125,6 @@ function removeList(date, element) {
   setTimeout(() => {
     element.remove();
     updateShadow(); // update shadow styling part
-  }, 250);
+  }, 250); // make sure to set it lower than the animation duration, here i set animation 0.3s and I set this to 250ms
 
 }
