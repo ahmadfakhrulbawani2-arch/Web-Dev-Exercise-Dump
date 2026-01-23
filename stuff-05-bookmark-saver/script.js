@@ -6,7 +6,7 @@ const list = document.getElementById("bookmark-list");
 function updateShadow() {
   const canScroll = list.scrollHeight > list.clientHeight;
 
-  // kalau gak bisa scroll → matiin semua shadow
+  // kalau gak bisa scroll --> matiin semua shadow
   if (!canScroll) {
     list.style.setProperty("--top", "0px");
     list.style.setProperty("--bottom", "0px");
@@ -87,8 +87,7 @@ function makeNewList(name, url, date) {
 
   // if we click removeBtn we remove a list with this name and url
   removeBtn.addEventListener("click", () => {
-    removeList(date);
-    updateShadow();
+    removeList(date, li);
   }); // this is where i got wrong, we need to make sure we call the function removelist 
 
 
@@ -115,9 +114,17 @@ function loadBookmarkData() {
 }
 
 // removing a list
-function removeList(date) {
+function removeList(date, element) {
   let bms = fetchBookmarkData();
   bms = bms.filter((bm) => (bm.date !== date));
   localStorage.setItem("bookmarks", JSON.stringify(bms));
-  loadBookmarkData(); // always update when deleting a list
+  // loadBookmarkData();
+  // instead of always reload/updating DOM i'll make the animation out
+  element.classList.add("removing");
+
+  setTimeout(() => {
+    element.remove();
+    updateShadow(); // update shadow styling part
+  }, 250);
+
 }
