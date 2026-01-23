@@ -63,11 +63,12 @@ addBookmarkBtn.addEventListener("click", function () {
       return;
     } 
 
+    let date = Date.now();
     // next make a list element
-    makeNewList(name, url);
+    makeNewList(name, url, date);
 
     // next save the data
-    saveBookmarkToLocal(name, url);
+    saveBookmarkToLocal(name, url, date);
 
     // reset
     bookmarkNameInput.value = "";
@@ -75,7 +76,7 @@ addBookmarkBtn.addEventListener("click", function () {
   }
 });
 
-function makeNewList(name, url) {
+function makeNewList(name, url, date) {
   let li = document.createElement("li");
   let anchor = document.createElement("a");
   let removeBtn = document.createElement("button");
@@ -86,7 +87,7 @@ function makeNewList(name, url) {
 
   // if we click removeBtn we remove a list with this name and url
   removeBtn.addEventListener("click", () => {
-    removeList(name, url);
+    removeList(date);
     updateShadow();
   }); // this is where i got wrong, we need to make sure we call the function removelist 
 
@@ -98,25 +99,25 @@ function makeNewList(name, url) {
   bookmarkList.appendChild(li);
 }
 
-function saveBookmarkToLocal(name, url) {
+function saveBookmarkToLocal(name, url, date) {
   let bm = fetchBookmarkData();
-  bm.push({name, url});
+  bm.push({name, url, date});
   localStorage.setItem("bookmarks", JSON.stringify(bm));
 }
 
 // in case we want to load and update the data also updating the DOM
 function loadBookmarkData() {
-  bookmarkList.innerHTML = "";
+  bookmarkList.innerHTML = ""; // make sure to flush the list
   const bms = fetchBookmarkData();
   bms.forEach((bm) => {
-    makeNewList(bm.name, bm.url);
+    makeNewList(bm.name, bm.url, bm.date);
   });
 }
 
 // removing a list
-function removeList(name, url) {
+function removeList(date) {
   let bms = fetchBookmarkData();
-  bms = bms.filter((bm) => (bm.name !== name || bm.url !== url));
+  bms = bms.filter((bm) => (bm.date !== date));
   localStorage.setItem("bookmarks", JSON.stringify(bms));
   loadBookmarkData(); // always update when deleting a list
 }
